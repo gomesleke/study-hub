@@ -1,22 +1,25 @@
 import json
 
-def create():
+def _get_path(file_name):
+    return f"{file_name}.json"
+
+def create(file_name):
     data = []  # estrutura inicial
-    with open("time_data.json", "w", encoding="utf-8") as file:
+    with open(_get_path(file_name),"w", encoding="utf-8") as file:
         json.dump(data, file, indent=4)
     return data
 
-def open_create():
+def open_create(file_name):
     try:
-        with open("time_data.json", "r", encoding="utf-8") as file:
+        with open(_get_path(file_name), "r", encoding="utf-8") as file:
             return json.load(file)
     except FileNotFoundError:
-        return create()
+        return create(file_name)
     except json.JSONDecodeError:
         # Arquivo existe mas está vazio ou corrompido
-        return create()
+        return create(file_name)
 
-def save(data):
-    with open("time_data.json", "w", encoding="utf-8") as file:
+def save(file_name,data):
+    with open(_get_path(file_name), "w", encoding="utf-8") as file:
         json.dump(data, file, indent=4)
     

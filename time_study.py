@@ -13,7 +13,7 @@ subject=[
     "Programacao"
 ]
 
-session_study=open_create() #link com .json
+session_study=open_create("time_data") #link com .json
 
 
 def show_menu():
@@ -22,8 +22,13 @@ def show_menu():
     print("\n==============")
     print("Hub Study Time")
     print("==============\n")
-    
 
+def list_subject():
+
+    print("\nMatérias:")
+    for i in range(len(subject)):
+        print(f"{i}-{subject[i]}")
+    
 def study_count():
     time_sec=0
     time_min=0
@@ -32,11 +37,9 @@ def study_count():
     start_time=input("Deseja estudar: ").lower()
 
     if start_time == "sim":
-        
-        print("\nMatérias:")
-        for i in range(len(subject)):
-            print(f"{i}-{subject[i]}")
 
+        list_subject()
+        
         subject_study=int(input("\nAssunto: "))
 
         print("\nCronômetro iniciado! Pressione Ctrl+C para parar.\n")
@@ -70,7 +73,7 @@ def study_count():
 
 
             session_study.append(session)
-            save(session_study)
+            save("time_data",session_study)
 
             print(f"Total estudado de '{session['subject']}': {session['hours']}h {session['minutes']}min {session['seconds']}s")
         
@@ -81,5 +84,6 @@ def study_count():
 def main():
     show_menu()
     study_count()
+
 
 main()
