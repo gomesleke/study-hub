@@ -28,6 +28,23 @@ def list_subject():
     print("\nMatérias:")
     for i in range(len(subject)):
         print(f"{i}-{subject[i]}")
+
+
+def time_count(time_sec,time_min,time_hours):
+
+    time.sleep(1)
+    time_sec+=1
+
+    if time_sec==60:
+        time_sec=0
+        time_min+=1
+                    
+    if time_min==60:
+        time_min=0
+        time_hours+=1
+
+    return time_sec,time_min,time_hours
+
     
 def study_count():
     time_sec=0
@@ -47,17 +64,9 @@ def study_count():
         try:
             while True:
                     
-                time.sleep(1)
-                time_sec+=1
-
-                if time_sec==60:
-                    time_sec=0
-                    time_min+=1
-                    
-                if time_min==60:
-                    time_min=0
-                    time_hours+=1
-
+                time_sec,time_min,time_hours=time_count(
+                    time_sec,time_min,time_hours
+                )
 
                 print(f"Tempo de estudo: {time_hours:02d}:{time_min:02d}:{time_sec:02d}", end="\r")
 
