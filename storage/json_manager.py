@@ -1,7 +1,7 @@
 import json
 
 def _get_path(file_name):
-    return f"{file_name}.json"
+    return f"data/{file_name}.json"
 
 def create(file_name):
     data = []  # estrutura inicial

@@ -84,12 +84,11 @@ def study_main(): #função principal
         
     else:
         input("Erro - tente novamente")
-        main()
+        main_timer()
 
 
-def main():
+def main_timer():
     show_menu()
     study_main()
 
 
-main()
