@@ -1,17 +1,12 @@
+"""
+O objetivo do timer.py é ser o cronometro da aplicação
+"""
+
 import time
 import os
 from storage.json_manager import open_create,save
 
-subject=[ 
-    "Matematica",
-    "Fisica",
-    "Quimica",
-    "Historia",
-    "Portugues",
-    "Catolicismo",
-    "Tecnologia",
-    "Programacao"
-]
+subject=[]
 
 session_study=open_create("time_data") #link com .json
 
@@ -22,6 +17,7 @@ def show_menu():
     print("\n==============")
     print("Hub Study Time")
     print("==============\n")
+
 
 def list_subject():
 

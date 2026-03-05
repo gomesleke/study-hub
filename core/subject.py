@@ -1,21 +1,30 @@
-#get_total_time(subject)
+"""
+O Objetivo desse arquivo é relacionado as matérias - add, remove, tempo...
+"""
+from core.timer import time_count
 
-from manager import open_create,save,create
-from time_study import time_count
+subject=[]
 
-def get_total_time(subject):
-    return 0
+size_subject=len(subject)
 
+def add_subject():
+    user_add_subject=input("Adicione uma Matéria: ")
+    subject.append(user_add_subject)
 
+def rm_subject():
 
+    for i in range(size_subject):
+        print(f"{i}-{subject[i]}")
 
-# def single_subject(subject):
-#     create(subject)
+    user_rm_subject=int(input("Remova uma Matéria(escolha seu indice): "))
 
-#     subject_list=open_create()
-#     subject_dict={}
+    try:
+    
+        for i in range(size_subject):
+            if user_rm_subject==subject[i]: # percorre a lista
+                subject.pop(i)
+            else:
+                print("Não encontrado")
 
-#     save(subject_list)
-#     subject_list.append(subject_dict)
-
-# single_subject('matematica')
+    except ValueError:
+        print("Try again")
