@@ -6,24 +6,7 @@ import time
 import os
 from storage.json_manager import open_create,save
 
-subject=[]
-
 session_study=open_create("time_data") #link com .json
-
-
-def show_menu():
-    os.system("cls") # cls - windows / clear - mac & linux
-
-    print("\n==============")
-    print("Hub Study Time")
-    print("==============\n")
-
-
-def list_subject():
-
-    print("\nMatérias:")
-    for i in range(len(subject)):
-        print(f"{i}-{subject[i]}")
 
 
 def time_count(time_sec,time_min,time_hours): #isolamento do tempo + get valores
@@ -51,7 +34,6 @@ def study_main(): #função principal
 
     if start_time == "sim":
 
-        list_subject()
         
         subject_study=int(input("\nAssunto: ")) #indice
 
@@ -73,14 +55,13 @@ def study_main(): #função principal
                 "hours":time_hours,
                 "minutes":time_min,
                 "seconds":time_sec,
-                "subject":subject[subject_study]
             }
 
 
             session_study.append(session)
             save("time_data",session_study)
 
-            print(f"Total estudado de '{session['subject']}': {session['hours']}h {session['minutes']}min {session['seconds']}s")
+            print(f"Total estudado: {session['hours']}h {session['minutes']}min {session['seconds']}s")
         
     else:
         input("Erro - tente novamente")
@@ -88,7 +69,6 @@ def study_main(): #função principal
 
 
 def main_timer():
-    show_menu()
     study_main()
 
 
