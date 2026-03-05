@@ -1,6 +1,6 @@
 import time
 import os
-from manager import open_create,save
+from storage.json_manager import open_create,save
 
 subject=[ 
     "Matematica",
@@ -17,7 +17,7 @@ session_study=open_create("time_data") #link com .json
 
 
 def show_menu():
-    os.system("clear")
+    os.system("cls") # cls - windows / clear - mac & linux
 
     print("\n==============")
     print("Hub Study Time")
