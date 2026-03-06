@@ -4,8 +4,10 @@ O objetivo do timer.py é ser o cronometro da aplicação
 
 import time
 from storage.json_manager import open_create,save
+from core.subject import show_subject
 
-session_study=open_create("time_data") #link com .json
+study_time=open_create("time_data") #link com .json
+subject=open_create("subject_data")
 
 
 def time_count(time_sec,time_min,time_hours): #isolamento do tempo + get valores
@@ -23,7 +25,7 @@ def time_count(time_sec,time_min,time_hours): #isolamento do tempo + get valores
 
     return time_sec,time_min,time_hours
 
-    
+
 def study_main(): #função principal
     time_sec=0
     time_min=0
@@ -33,8 +35,9 @@ def study_main(): #função principal
 
     if start_time == "sim":
 
-        
-        subject_study=int(input("\nAssunto: ")) #indice
+        show_subject()
+
+        indice_study_subject=int(input("\nAssunto (indice): ")) #indice
 
         print("\nCronômetro iniciado! Pressione Ctrl+C para parar.\n")
 
@@ -51,16 +54,18 @@ def study_main(): #função principal
             print(f"\n\nSessão finalizada")
 
             session={
+                "subject":subject[indice_study_subject],
                 "hours":time_hours,
                 "minutes":time_min,
                 "seconds":time_sec,
             }
 
 
-            session_study.append(session)
-            save("time_data",session_study)
+            study_time.append(session)
+            save("time_data",study_time)
 
             print(f"Total estudado: {session['hours']}h {session['minutes']}min {session['seconds']}s")
+            print(subject)
         
     else:
         input("Erro - tente novamente")
